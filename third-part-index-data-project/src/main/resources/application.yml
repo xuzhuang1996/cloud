@@ -1,0 +1,7 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # 注册中心的地址,后续某个微服务要把自己注册到 eureka server, 那么就要使用这个地址
+spring:
+  application:
+    name: third-part-index-data-project

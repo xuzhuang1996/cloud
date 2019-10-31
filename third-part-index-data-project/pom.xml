@@ -7,27 +7,27 @@
         <groupId>com.xu</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>eureka-server</artifactId>
+    <groupId>com.cloud.xu</groupId>
+    <artifactId>third-part-index-data-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>eureka-server</name>
+    <name>third-part-index-data-project</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
+    <!--springMVC-->
     <dependencies>
-        <!--注册服务中心依赖-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-
-        <!--必须加这个依赖，否则报错No active profile set, falling back to default profiles，即直接停止运行-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--注册服务客户端依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 

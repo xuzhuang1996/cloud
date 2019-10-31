@@ -9,8 +9,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
  * @author xuzhuang
+ * 这个工程启动，是为了作为服务注册。后面所有的微服务，都注册在这个里面，统一管理
  */
-
 @SpringBootApplication
 @EnableEurekaServer // 表示它是个注册中心服务器
 public class EurekaServerApplication {
