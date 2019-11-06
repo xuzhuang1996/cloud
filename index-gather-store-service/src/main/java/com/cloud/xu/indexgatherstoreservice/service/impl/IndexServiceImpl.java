@@ -2,13 +2,12 @@ package com.cloud.xu.indexgatherstoreservice.service.impl;
 
 import com.cloud.xu.indexgatherstoreservice.pojo.Index;
 import com.cloud.xu.indexgatherstoreservice.service.IndexService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class IndexServiceImpl implements IndexService {
@@ -21,9 +20,17 @@ public class IndexServiceImpl implements IndexService {
     RestTemplate restTemplate;
 
     @Override
+    @HystrixCommand(fallbackMethod = "thirdPartNotConnected")
     public List<Index> fetchIndexesFromThirdPart() {
         List<Map> temp= restTemplate.getForObject("http://127.0.0.1:8090/indexes/codes.json",List.class);
         return map2Index(temp);
+    }
+
+    public List<Index> thirdPartNotConnected(){
+        Index index= new Index();
+        index.setCode("000000");
+        index.setName("无效指数代码");
+        return Collections.singletonList(index);
     }
 
     /**
